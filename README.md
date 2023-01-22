@@ -1,5 +1,5 @@
 #### Telegram is a bot that allows you to ask questions addressed to the gpt-3 chat.
-##### `Aiogram`, `openai` and `python-dotenv` are for this script.
+##### `Aiogram`, `openai` and `python-dotenv` are used for this script.
 ##### Here are the instructions to use the code:
 
 ##### Create a `.env` file in the same directory as the code.
