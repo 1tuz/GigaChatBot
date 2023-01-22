@@ -2,7 +2,7 @@
 Aiogram, openai and python-dotenv are used from the modules.
 ##### Here are the instructions to use the code:
 
-##### Create a .env file in the same directory as the code.
+##### Create a `.env` file in the same directory as the code.
 
 ##### Add the following environment variables to the .env file, replace YOUR_TOKEN and YOUR_API_KEY with the actual token and API key values:
 ```
