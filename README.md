@@ -1,5 +1,5 @@
-#### Telegram-бот, позволяющий задавать вопросы, адресованный в gpt-3 чат.
-##### Из модулей используется aiogram, openai и python-dotenv.
+#### Telegram is a bot that allows you to ask questions addressed to the gpt-3 chat.
+Aiogram, openai and python-dotenv are used from the modules.
 ##### Here are the instructions to use the code:
 
 ##### Create a .env file in the same directory as the code.
