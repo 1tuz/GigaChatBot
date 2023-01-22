@@ -4,7 +4,7 @@
 
 ##### Create a `.env` file in the same directory as the code.
 
-##### Add the following environment variables to the .env file, replace YOUR_TOKEN and YOUR_API_KEY with the actual token and API key values:
+##### Add the following environment variables to the `.env` file, replace `YOUR_TOKEN` and `YOUR_API_KEY` with the actual token and API key values:
 ```
 TOKEN=YOUR_TOKEN
 OPENAI_KEY=YOUR_API_KEY
