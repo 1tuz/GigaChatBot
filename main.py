@@ -16,7 +16,7 @@ dp = Dispatcher(bot)
 @dp.message_handler() 
 async def send(message : types.Message): 
     response = openai.Completion.create( 
-        model="text-davinci-002", 
+        model="text-davinci-003", 
         prompt=message.text, 
         temperature=0.9, 
         max_tokens=1000, 
