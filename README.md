@@ -1,4 +1,4 @@
-#### Telegram is a bot that allows you to ask questions addressed to the gpt-3 chat.
+#### Telegram is a bot that allows you to ask questions addressed to the OpenAI.
 ##### `Aiogram`, `openai` and `python-dotenv` are used for this script.
 #### How to use the code:
 
