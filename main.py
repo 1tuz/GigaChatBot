@@ -7,7 +7,7 @@ from aiogram.utils import executor
 
 load_dotenv()
 token = os.getenv('TOKEN')
-openai_api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = os.getenv('OPENAI_KEY')
 
 bot = Bot(token)
 dp = Dispatcher(bot)
