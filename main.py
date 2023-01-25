@@ -68,5 +68,6 @@ async def send(message: types.Message, state: FSMContext):
         await bot.send_message(message.chat.id, follow_up_message, reply_markup=follow_up_keyboard)
         # Change the state of the session
         await state.set_state(States.WaitForCorrection)
-            else:
+    else:
         await bot.send_message(message.chat.id, "Sorry, I am not able to send a response, please try again later")
+
