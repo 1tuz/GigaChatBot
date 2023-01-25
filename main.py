@@ -31,7 +31,7 @@ async def send(message: types.Message):
         stop=["You:"]
     )
     # Send the AI's response
-    await message.answer(response['choices'][0]['text'])
+    await message.reply(response['choices'][0]['text'])
     # Send a follow-up message asking the user if they would like to make any corrections
     follow_up_message = "Is there anything you would like to correct in my response?"
     follow_up_keyboard = types.InlineKeyboardMarkup()
