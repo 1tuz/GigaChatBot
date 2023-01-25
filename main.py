@@ -7,7 +7,7 @@ from aiogram.utils import executor
 
 load_dotenv()
 token = os.getenv('TOKEN')
-openai_api_key = os.getenv('OPENAI_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
 
 bot = Bot(token)
 dp = Dispatcher(bot)
@@ -36,7 +36,7 @@ async def follow_up_correction(message: types.Message):
         previous_message = user_messages[message.from_user.id]
         # use previous_message and message.text to handle follow-up corrections
 
-@dp.message_handler(commands=['restart'])
+@dp.message_handler(commands=['/restart'])
 async def restart(message: types.Message):
     await message.answer("Bot restarting...")
     executor.stop()
