@@ -6,26 +6,21 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
 load_dotenv()
-
 token = os.getenv('TOKEN')
-openai.api_key = os.getenv('OPENAI_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
 
 bot = Bot(token)
 dp = Dispatcher(bot)
+openai.api_key = openai_api_key
 
-# Store the previous context
-context = ""
+user_messages = {}
 
-class States:
-    Normal = 'normal'
-    WaitForCorrection = 'wait_for_correction'
-
-@dp.message_handler(state=States.Normal)
-async def send(message: types.Message):
-    global context
+@dp.message_handler()
+async def save_user_message(message: types.Message):
+    user_messages[message.from_user.id] = message.text
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt=message.text + context,
+        prompt=message.text,
         temperature=0.9,
         max_tokens=1000,
         top_p=1.0,
@@ -33,12 +28,18 @@ async def send(message: types.Message):
         presence_penalty=0.6,
         stop=["You:"]
     )
-    # Send the AI's response
-    await message.reply(response['choices'][0]['text'])
-    # Send a follow-up message asking the user if they would like to make any corrections
-    follow_up_message = "Is there anything you would like to correct in my response?"
-    follow_up_keyboard = types.InlineKeyboardMarkup()
-    follow_up_keyboard.add(types.InlineKeyboardButton("Yes", callback_data="yes"))
-    follow_up_keyboard.add(types.InlineKeyboardButton("No", callback_data="no"))
-    await bot.send_message(message.chat.id, follow_up_message, reply_markup=follow_up_keyboard)
-    context = response['choices'][0]['text']
+    await message.answer(response['choices'][0]['text'])
+
+@dp.message_handler()
+async def follow_up_correction(message: types.Message):
+    if message.from_user.id in user_messages:
+        previous_message = user_messages[message.from_user.id]
+        # use previous_message and message.text to handle follow-up corrections
+
+@dp.message_handler(commands=['restart'])
+async def restart(message: types.Message):
+    await message.answer("Bot restarting...")
+    executor.stop()
+    executor.start_polling(dp, skip_updates=True)
+
+executor.start_polling(dp, skip_updates=True)
